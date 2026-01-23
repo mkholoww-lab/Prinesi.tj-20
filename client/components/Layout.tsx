@@ -121,10 +121,27 @@ export default function Layout({ children }: LayoutProps) {
         )}
       >
         {/* Header */}
-        <div className="h-16 bg-white dark:bg-slate-900 border-b border-border flex items-center px-6 shadow-sm">
+        <div className="h-16 bg-white dark:bg-slate-900 border-b border-border flex items-center justify-between px-6 shadow-sm">
           <h1 className="text-xl font-semibold text-foreground">
             Courier Service Management
           </h1>
+          {user && (
+            <div className="flex items-center gap-4">
+              <div className="text-right">
+                <p className="text-sm font-medium text-foreground">{user.username}</p>
+                <p className="text-xs text-muted-foreground capitalize">
+                  {user.role}
+                </p>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 text-red-500 hover:text-red-600 transition-colors p-2"
+                title="Logout"
+              >
+                <LogOut className="w-5 h-5" />
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Content */}
