@@ -1,8 +1,10 @@
 import Layout from "@/components/Layout";
 import { Package, Users, Clock, TrendingUp, Bike } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Dashboard() {
+  const { user, hasAccess } = useAuth();
   const stats = [
     {
       label: "Active Couriers",
