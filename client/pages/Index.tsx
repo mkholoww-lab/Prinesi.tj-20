@@ -92,6 +92,12 @@ export default function Dashboard() {
                 + Log Delivery
               </Link>
               <Link
+                to="/scooters"
+                className="block w-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center"
+              >
+                + Manage Scooters
+              </Link>
+              <Link
                 to="/partners"
                 className="block w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center"
               >
