@@ -1,27 +1,32 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth, UserRole } from "@/contexts/AuthContext";
-import { Lock, LogIn } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Lock, LogIn, AlertCircle } from "lucide-react";
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const { login } = useAuth();
-  const [selectedRole, setSelectedRole] = useState<UserRole>("admin");
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
-    if (username.trim()) {
-      login(username, selectedRole);
+    setError("");
+    if (!username.trim() || !password.trim()) {
+      setError("Please enter username and password");
+      return;
+    }
+
+    if (login(username, password)) {
       navigate("/");
+    } else {
+      setError("Invalid username or password");
+      setPassword("");
     }
   };
 
-  const roles: {
-    id: UserRole;
-    title: string;
-    description: string;
-    color: string;
-  }[] = [
+  const roles: { id: UserRole; title: string; description: string; color: string }[] = [
     {
       id: "admin",
       title: "Admin",
@@ -128,8 +133,7 @@ export default function LoginPage() {
             className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
           >
             <LogIn className="w-5 h-5" />
-            Login as{" "}
-            {selectedRole.charAt(0).toUpperCase() + selectedRole.slice(1)}
+            Login as {selectedRole.charAt(0).toUpperCase() + selectedRole.slice(1)}
           </button>
 
           {/* Demo Accounts */}
