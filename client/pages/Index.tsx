@@ -5,13 +5,14 @@ import { useAuth } from "@/contexts/AuthContext";
 
 export default function Dashboard() {
   const { user, hasAccess } = useAuth();
-  const stats = [
+  const allStats = [
     {
       label: "Active Couriers",
       value: "12",
       icon: Users,
       color: "bg-blue-500",
       href: "/couriers",
+      roles: ["admin", "manager"] as const,
     },
     {
       label: "Total Deliveries",
@@ -19,6 +20,7 @@ export default function Dashboard() {
       icon: Package,
       color: "bg-orange-500",
       href: "/deliveries",
+      roles: ["admin", "operator"] as const,
     },
     {
       label: "Scooters",
@@ -26,6 +28,7 @@ export default function Dashboard() {
       icon: Bike,
       color: "bg-indigo-500",
       href: "/scooters",
+      roles: ["admin"] as const,
     },
     {
       label: "Partners",
@@ -33,8 +36,11 @@ export default function Dashboard() {
       icon: Users,
       color: "bg-green-500",
       href: "/partners",
+      roles: ["admin", "operator"] as const,
     },
   ];
+
+  const stats = allStats.filter((stat) => hasAccess(stat.roles));
 
   return (
     <Layout>
