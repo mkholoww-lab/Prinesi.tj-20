@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { Package, Users, Clock, TrendingUp } from "lucide-react";
+import { Package, Users, Clock, TrendingUp, Bike } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Dashboard() {
