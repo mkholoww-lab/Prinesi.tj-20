@@ -92,30 +92,38 @@ export default function Dashboard() {
               Quick Actions
             </h2>
             <div className="space-y-3">
-              <Link
-                to="/couriers"
-                className="block w-full bg-primary hover:bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center"
-              >
-                + Add New Courier
-              </Link>
-              <Link
-                to="/deliveries"
-                className="block w-full bg-secondary hover:bg-orange-600 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center"
-              >
-                + Log Delivery
-              </Link>
-              <Link
-                to="/scooters"
-                className="block w-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center"
-              >
-                + Manage Scooters
-              </Link>
-              <Link
-                to="/partners"
-                className="block w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center"
-              >
-                + Add Partner
-              </Link>
+              {hasAccess(["admin", "manager"]) && (
+                <Link
+                  to="/couriers"
+                  className="block w-full bg-primary hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center"
+                >
+                  + Add New Courier
+                </Link>
+              )}
+              {hasAccess(["admin", "operator"]) && (
+                <Link
+                  to="/deliveries"
+                  className="block w-full bg-secondary hover:bg-teal-600 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center"
+                >
+                  + Log Delivery
+                </Link>
+              )}
+              {hasAccess(["admin"]) && (
+                <Link
+                  to="/scooters"
+                  className="block w-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center"
+                >
+                  + Manage Scooters
+                </Link>
+              )}
+              {hasAccess(["admin", "operator"]) && (
+                <Link
+                  to="/partners"
+                  className="block w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center"
+                >
+                  + Add Partner
+                </Link>
+              )}
             </div>
           </div>
 
