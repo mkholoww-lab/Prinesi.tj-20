@@ -103,7 +103,7 @@ export default function DeliveriesPage() {
 
   const handleUpdateStatus = (id: string, newStatus: Delivery["status"]) => {
     setDeliveries(
-      deliveries.map((d) => (d.id === id ? { ...d, status: newStatus } : d))
+      deliveries.map((d) => (d.id === id ? { ...d, status: newStatus } : d)),
     );
   };
 
@@ -111,7 +111,7 @@ export default function DeliveriesPage() {
     (delivery) =>
       delivery.orderNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
       delivery.partner.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      delivery.courier.toLowerCase().includes(searchTerm.toLowerCase())
+      delivery.courier.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
@@ -137,8 +137,12 @@ export default function DeliveriesPage() {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-border">
-            <p className="text-sm text-muted-foreground mb-1">Total Deliveries</p>
-            <p className="text-3xl font-bold text-primary">{deliveries.length}</p>
+            <p className="text-sm text-muted-foreground mb-1">
+              Total Deliveries
+            </p>
+            <p className="text-3xl font-bold text-primary">
+              {deliveries.length}
+            </p>
           </div>
           <div className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-border">
             <p className="text-sm text-muted-foreground mb-1">Completed</p>
@@ -277,15 +281,15 @@ export default function DeliveriesPage() {
                     onChange={(e) =>
                       handleUpdateStatus(
                         delivery.id,
-                        e.target.value as Delivery["status"]
+                        e.target.value as Delivery["status"],
                       )
                     }
                     className={`px-3 py-1 rounded-lg text-sm font-medium border-none cursor-pointer ${
                       delivery.status === "completed"
                         ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                         : delivery.status === "in-transit"
-                        ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-                        : "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200"
+                          ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+                          : "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200"
                     }`}
                   >
                     <option value="pending">Pending</option>
@@ -316,9 +320,7 @@ export default function DeliveriesPage() {
 
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                  <p className="text-xs text-muted-foreground mb-1">
-                    Distance
-                  </p>
+                  <p className="text-xs text-muted-foreground mb-1">Distance</p>
                   <p className="text-lg font-bold text-primary">
                     {delivery.distance} km
                   </p>

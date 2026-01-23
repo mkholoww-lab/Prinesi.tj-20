@@ -127,7 +127,10 @@ export default function ScootersPage() {
     setScooters(scooters.filter((s) => s.id !== id));
   };
 
-  const handleEquipmentToggle = (scooterId: string, equipment: keyof EquipmentStatus) => {
+  const handleEquipmentToggle = (
+    scooterId: string,
+    equipment: keyof EquipmentStatus,
+  ) => {
     setScooters(
       scooters.map((s) =>
         s.id === scooterId
@@ -138,28 +141,26 @@ export default function ScootersPage() {
                 [equipment]: !s.equipment[equipment],
               },
             }
-          : s
-      )
+          : s,
+      ),
     );
   };
 
   const handleUpdateProblems = (id: string, problems: string) => {
-    setScooters(
-      scooters.map((s) => (s.id === id ? { ...s, problems } : s))
-    );
+    setScooters(scooters.map((s) => (s.id === id ? { ...s, problems } : s)));
   };
 
   const handleUpdateNotes = (id: string, notes: string) => {
-    setScooters(
-      scooters.map((s) => (s.id === id ? { ...s, notes } : s))
-    );
+    setScooters(scooters.map((s) => (s.id === id ? { ...s, notes } : s)));
   };
 
   const filteredScooters = scooters.filter(
     (scooter) =>
       scooter.scooterNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      scooter.assignedCourier.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      scooter.govRegNumber.includes(searchTerm)
+      scooter.assignedCourier
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      scooter.govRegNumber.includes(searchTerm),
   );
 
   const equipmentLabels: Record<keyof EquipmentStatus, string> = {
@@ -198,13 +199,17 @@ export default function ScootersPage() {
             <p className="text-3xl font-bold text-primary">{scooters.length}</p>
           </div>
           <div className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-border">
-            <p className="text-sm text-muted-foreground mb-1">In Good Condition</p>
+            <p className="text-sm text-muted-foreground mb-1">
+              In Good Condition
+            </p>
             <p className="text-3xl font-bold text-green-500">
               {scooters.filter((s) => s.status === "good").length}
             </p>
           </div>
           <div className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-border">
-            <p className="text-sm text-muted-foreground mb-1">Needs Maintenance</p>
+            <p className="text-sm text-muted-foreground mb-1">
+              Needs Maintenance
+            </p>
             <p className="text-3xl font-bold text-orange-500">
               {scooters.filter((s) => s.status === "maintenance").length}
             </p>
@@ -236,7 +241,10 @@ export default function ScootersPage() {
                     placeholder="Scooter Number (e.g. SCTR-001)"
                     value={formData.scooterNumber}
                     onChange={(e) =>
-                      setFormData({ ...formData, scooterNumber: e.target.value })
+                      setFormData({
+                        ...formData,
+                        scooterNumber: e.target.value,
+                      })
                     }
                     className="px-4 py-2 border border-input rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                   />
@@ -344,7 +352,7 @@ export default function ScootersPage() {
               <div
                 onClick={() =>
                   setExpandedScooter(
-                    expandedScooter === scooter.id ? null : scooter.id
+                    expandedScooter === scooter.id ? null : scooter.id,
                   )
                 }
                 className="p-6 cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors flex items-center justify-between"
@@ -359,15 +367,15 @@ export default function ScootersPage() {
                         scooter.status === "good"
                           ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                           : scooter.status === "maintenance"
-                          ? "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200"
-                          : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
+                            ? "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200"
+                            : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                       }`}
                     >
                       {scooter.status === "good"
                         ? "Good"
                         : scooter.status === "maintenance"
-                        ? "Maintenance"
-                        : "Damaged"}
+                          ? "Maintenance"
+                          : "Damaged"}
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground mt-2">
@@ -418,7 +426,9 @@ export default function ScootersPage() {
                         <div>
                           <p className="text-muted-foreground">Purchase Date</p>
                           <p className="text-foreground">
-                            {new Date(scooter.purchaseDate).toLocaleDateString()}
+                            {new Date(
+                              scooter.purchaseDate,
+                            ).toLocaleDateString()}
                           </p>
                         </div>
                         <div>
@@ -449,7 +459,9 @@ export default function ScootersPage() {
                             Last Check Date
                           </p>
                           <p className="text-foreground">
-                            {new Date(scooter.lastCheckDate).toLocaleDateString()}
+                            {new Date(
+                              scooter.lastCheckDate,
+                            ).toLocaleDateString()}
                           </p>
                         </div>
                       </div>
@@ -462,23 +474,25 @@ export default function ScootersPage() {
                       Equipment Status
                     </h4>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                      {(Object.keys(scooter.equipment) as Array<keyof EquipmentStatus>).map(
-                        (equipment) => (
-                          <button
-                            key={equipment}
-                            onClick={() =>
-                              handleEquipmentToggle(scooter.id, equipment)
-                            }
-                            className={`p-3 rounded-lg border-2 transition-all text-sm font-medium ${
-                              scooter.equipment[equipment]
-                                ? "bg-green-100 border-green-300 text-green-800 dark:bg-green-900 dark:border-green-700 dark:text-green-200"
-                                : "bg-red-100 border-red-300 text-red-800 dark:bg-red-900 dark:border-red-700 dark:text-red-200"
-                            }`}
-                          >
-                            {equipmentLabels[equipment]}
-                          </button>
-                        )
-                      )}
+                      {(
+                        Object.keys(scooter.equipment) as Array<
+                          keyof EquipmentStatus
+                        >
+                      ).map((equipment) => (
+                        <button
+                          key={equipment}
+                          onClick={() =>
+                            handleEquipmentToggle(scooter.id, equipment)
+                          }
+                          className={`p-3 rounded-lg border-2 transition-all text-sm font-medium ${
+                            scooter.equipment[equipment]
+                              ? "bg-green-100 border-green-300 text-green-800 dark:bg-green-900 dark:border-green-700 dark:text-green-200"
+                              : "bg-red-100 border-red-300 text-red-800 dark:bg-red-900 dark:border-red-700 dark:text-red-200"
+                          }`}
+                        >
+                          {equipmentLabels[equipment]}
+                        </button>
+                      ))}
                     </div>
                   </div>
 
@@ -505,7 +519,9 @@ export default function ScootersPage() {
                       </h4>
                       <textarea
                         value={scooter.notes}
-                        onChange={(e) => handleUpdateNotes(scooter.id, e.target.value)}
+                        onChange={(e) =>
+                          handleUpdateNotes(scooter.id, e.target.value)
+                        }
                         placeholder="Additional notes for the scooter..."
                         className="w-full px-4 py-2 border border-input rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary text-sm"
                         rows={4}

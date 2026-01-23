@@ -31,8 +31,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         role === "admin"
           ? "Admin User"
           : role === "operator"
-          ? "Operator User"
-          : "Manager User",
+            ? "Operator User"
+            : "Manager User",
     };
     setUser(newUser);
   };
@@ -47,7 +47,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn: !!user, login, logout, hasAccess }}>
+    <AuthContext.Provider
+      value={{ user, isLoggedIn: !!user, login, logout, hasAccess }}
+    >
       {children}
     </AuthContext.Provider>
   );

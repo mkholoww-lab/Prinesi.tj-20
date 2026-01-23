@@ -1,6 +1,7 @@
 # Prinesi.tj Courier Management System - Role-Based Access
 
 ## Overview
+
 The Prinesi.tj Courier Management System now includes three distinct user roles with specific access permissions and features.
 
 ---
@@ -10,6 +11,7 @@ The Prinesi.tj Courier Management System now includes three distinct user roles 
 **Description:** Complete system control with access to all features, settings, and data.
 
 **Accessible Pages:**
+
 - ✅ Dashboard (Full overview)
 - ✅ Couriers Management (Add, edit, delete couriers with full details)
 - ✅ On-Duty Tracking (Real-time courier monitoring)
@@ -19,6 +21,7 @@ The Prinesi.tj Courier Management System now includes three distinct user roles 
 - ✅ Reports (All reports - Couriers, Partners, Scooters)
 
 **Key Features:**
+
 - Add and manage couriers with detailed information (passport, parent contact, work hours)
 - Track courier equipment and uniform distribution
 - Manage entire scooter fleet with maintenance tracking
@@ -28,10 +31,11 @@ The Prinesi.tj Courier Management System now includes three distinct user roles 
 - Track deliveries with complete order management
 
 **Quick Actions:**
-- + Add New Courier
-- + Log Delivery
-- + Manage Scooters
-- + Add Partner
+
+- - Add New Courier
+- - Log Delivery
+- - Manage Scooters
+- - Add Partner
 
 ---
 
@@ -40,6 +44,7 @@ The Prinesi.tj Courier Management System now includes three distinct user roles 
 **Description:** Focused access for managing daily operations - orders, partners, and performance tracking.
 
 **Accessible Pages:**
+
 - ✅ Dashboard (Overview of deliveries and partners)
 - ✅ Deliveries (Log and manage deliveries)
 - ✅ Partners (View and manage delivery partners)
@@ -49,6 +54,7 @@ The Prinesi.tj Courier Management System now includes three distinct user roles 
 - ❌ Scooters (Hidden)
 
 **Key Features:**
+
 - Log new deliveries with complete details
 - Track partner performance
 - View courier performance reports
@@ -56,8 +62,9 @@ The Prinesi.tj Courier Management System now includes three distinct user roles 
 - Monitor monthly delivery volumes
 
 **Quick Actions:**
-- + Log Delivery
-- + Add Partner
+
+- - Log Delivery
+- - Add Partner
 
 **Use Case:** Operations manager tracking daily deliveries and partner coordination.
 
@@ -68,6 +75,7 @@ The Prinesi.tj Courier Management System now includes three distinct user roles 
 **Description:** Limited access for courier management and performance monitoring.
 
 **Accessible Pages:**
+
 - ✅ Dashboard (Courier-focused overview)
 - ✅ Couriers (Add and manage couriers)
 - ✅ Reports (Courier performance reports)
@@ -77,6 +85,7 @@ The Prinesi.tj Courier Management System now includes three distinct user roles 
 - ❌ Partners (Hidden)
 
 **Key Features:**
+
 - Add new couriers with detailed information
 - Manage courier profiles and assignments
 - View courier performance metrics
@@ -84,7 +93,8 @@ The Prinesi.tj Courier Management System now includes three distinct user roles 
 - Monitor working hours and scooter assignments
 
 **Quick Actions:**
-- + Add New Courier
+
+- - Add New Courier
 
 **Use Case:** HR or team lead managing courier roster and performance.
 
@@ -93,13 +103,14 @@ The Prinesi.tj Courier Management System now includes three distinct user roles 
 ## Login Credentials
 
 ### Demo Accounts
+
 Use these to test each role:
 
-| Role | Username | Password |
-|------|----------|----------|
-| Admin | `admin` | (empty) |
-| Operator | `operator` | (empty) |
-| Manager | `manager` | (empty) |
+| Role     | Username   | Password |
+| -------- | ---------- | -------- |
+| Admin    | `admin`    | (empty)  |
+| Operator | `operator` | (empty)  |
+| Manager  | `manager`  | (empty)  |
 
 Simply enter the username on the login page and click the corresponding role button or use the demo account shortcuts.
 
@@ -117,6 +128,7 @@ Simply enter the username on the login page and click the corresponding role but
 ## Navigation by Role
 
 ### Admin Sidebar (Full Access)
+
 ```
 🏠 Dashboard
 👥 Couriers
@@ -129,6 +141,7 @@ Simply enter the username on the login page and click the corresponding role but
 ```
 
 ### Operator Sidebar
+
 ```
 🏠 Dashboard
 📦 Deliveries
@@ -138,6 +151,7 @@ Simply enter the username on the login page and click the corresponding role but
 ```
 
 ### Manager Sidebar
+
 ```
 🏠 Dashboard
 👥 Couriers
@@ -149,31 +163,33 @@ Simply enter the username on the login page and click the corresponding role but
 
 ## Features Summary Table
 
-| Feature | Admin | Operator | Manager |
-|---------|:-----:|:--------:|:-------:|
-| Dashboard | ✅ | ✅ | ✅ |
-| Couriers | ✅ | ❌ | ✅ |
-| On-Duty Tracking | ✅ | ❌ | ❌ |
-| Deliveries | ✅ | ✅ | ❌ |
-| Scooters | ✅ | ❌ | ❌ |
-| Partners | ✅ | ✅ | ❌ |
-| Reports | ✅ | ✅ | ✅ |
-| Add Courier | ✅ | ❌ | ✅ |
-| Log Delivery | ✅ | ✅ | ❌ |
-| Manage Scooters | ✅ | ❌ | ❌ |
-| Add Partner | ✅ | ✅ | ❌ |
+| Feature          | Admin | Operator | Manager |
+| ---------------- | :---: | :------: | :-----: |
+| Dashboard        |  ✅   |    ✅    |   ✅    |
+| Couriers         |  ✅   |    ❌    |   ✅    |
+| On-Duty Tracking |  ✅   |    ❌    |   ❌    |
+| Deliveries       |  ✅   |    ✅    |   ❌    |
+| Scooters         |  ✅   |    ❌    |   ❌    |
+| Partners         |  ✅   |    ✅    |   ❌    |
+| Reports          |  ✅   |    ✅    |   ✅    |
+| Add Courier      |  ✅   |    ❌    |   ✅    |
+| Log Delivery     |  ✅   |    ✅    |   ❌    |
+| Manage Scooters  |  ✅   |    ❌    |   ❌    |
+| Add Partner      |  ✅   |    ✅    |   ❌    |
 
 ---
 
 ## Implementation Details
 
 ### Authentication
+
 - Built with React Context API (`AuthContext`)
 - Session stored in component state (can be extended to localStorage/backend)
 - Protected routes with role validation
 - Automatic redirect to login if not authenticated
 
 ### Routes Protected By Role
+
 - `/couriers` → Admin, Manager
 - `/on-duty` → Admin only
 - `/deliveries` → Admin, Operator
@@ -182,6 +198,7 @@ Simply enter the username on the login page and click the corresponding role but
 - `/reports` → All roles (Admin, Operator, Manager)
 
 ### Logout
+
 - Available in the top-right corner of every page
 - Displays current username and role
 - Returns to login page on logout

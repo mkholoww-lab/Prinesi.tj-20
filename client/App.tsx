@@ -57,30 +57,57 @@ function AppRoutes() {
       {/* Admin routes */}
       <Route
         path="/couriers"
-        element={<ProtectedRoute element={<CouriersPage />} requiredRoles={["admin", "manager"]} />}
+        element={
+          <ProtectedRoute
+            element={<CouriersPage />}
+            requiredRoles={["admin", "manager"]}
+          />
+        }
       />
       <Route
         path="/on-duty"
-        element={<ProtectedRoute element={<OnDutyPage />} requiredRoles={["admin"]} />}
+        element={
+          <ProtectedRoute element={<OnDutyPage />} requiredRoles={["admin"]} />
+        }
       />
       {/* Operator + Admin routes */}
       <Route
         path="/deliveries"
-        element={<ProtectedRoute element={<DeliveriesPage />} requiredRoles={["admin", "operator"]} />}
+        element={
+          <ProtectedRoute
+            element={<DeliveriesPage />}
+            requiredRoles={["admin", "operator"]}
+          />
+        }
       />
       <Route
         path="/partners"
-        element={<ProtectedRoute element={<PartnersPage />} requiredRoles={["admin", "operator"]} />}
+        element={
+          <ProtectedRoute
+            element={<PartnersPage />}
+            requiredRoles={["admin", "operator"]}
+          />
+        }
       />
       {/* Admin only */}
       <Route
         path="/scooters"
-        element={<ProtectedRoute element={<ScootersPage />} requiredRoles={["admin"]} />}
+        element={
+          <ProtectedRoute
+            element={<ScootersPage />}
+            requiredRoles={["admin"]}
+          />
+        }
       />
       {/* All roles */}
       <Route
         path="/reports"
-        element={<ProtectedRoute element={<ReportsPage />} requiredRoles={["admin", "operator", "manager"]} />}
+        element={
+          <ProtectedRoute
+            element={<ReportsPage />}
+            requiredRoles={["admin", "operator", "manager"]}
+          />
+        }
       />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />

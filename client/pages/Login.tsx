@@ -16,7 +16,12 @@ export default function LoginPage() {
     }
   };
 
-  const roles: { id: UserRole; title: string; description: string; color: string }[] = [
+  const roles: {
+    id: UserRole;
+    title: string;
+    description: string;
+    color: string;
+  }[] = [
     {
       id: "admin",
       title: "Admin",
@@ -123,7 +128,8 @@ export default function LoginPage() {
             className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
           >
             <LogIn className="w-5 h-5" />
-            Login as {selectedRole.charAt(0).toUpperCase() + selectedRole.slice(1)}
+            Login as{" "}
+            {selectedRole.charAt(0).toUpperCase() + selectedRole.slice(1)}
           </button>
 
           {/* Demo Accounts */}

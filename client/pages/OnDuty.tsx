@@ -55,8 +55,8 @@ export default function OnDutyPage() {
               ...c,
               status: c.status === "on-duty" ? "break" : "on-duty",
             }
-          : c
-      )
+          : c,
+      ),
     );
   };
 
@@ -73,7 +73,9 @@ export default function OnDutyPage() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-foreground">On-Duty Tracking</h1>
+            <h1 className="text-3xl font-bold text-foreground">
+              On-Duty Tracking
+            </h1>
             <p className="text-muted-foreground mt-1">
               Monitor active couriers in real-time
             </p>
@@ -87,12 +89,18 @@ export default function OnDutyPage() {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-border">
-            <p className="text-sm text-muted-foreground mb-1">Active Couriers</p>
-            <p className="text-3xl font-bold text-green-500">{activeCouriers.length}</p>
+            <p className="text-sm text-muted-foreground mb-1">
+              Active Couriers
+            </p>
+            <p className="text-3xl font-bold text-green-500">
+              {activeCouriers.length}
+            </p>
           </div>
           <div className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-border">
             <p className="text-sm text-muted-foreground mb-1">On Break</p>
-            <p className="text-3xl font-bold text-orange-500">{onBreak.length}</p>
+            <p className="text-3xl font-bold text-orange-500">
+              {onBreak.length}
+            </p>
           </div>
           <div className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-border">
             <p className="text-sm text-muted-foreground mb-1">Total Distance</p>
@@ -112,7 +120,10 @@ export default function OnDutyPage() {
           <div className="divide-y divide-border">
             {activeCouriers.length > 0 ? (
               activeCouriers.map((courier) => (
-                <div key={courier.id} className="p-6 hover:bg-gray-50 dark:hover:bg-slate-800">
+                <div
+                  key={courier.id}
+                  className="p-6 hover:bg-gray-50 dark:hover:bg-slate-800"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                       <h3 className="text-lg font-semibold text-foreground">
@@ -200,7 +211,10 @@ export default function OnDutyPage() {
             </div>
             <div className="divide-y divide-border">
               {onBreak.map((courier) => (
-                <div key={courier.id} className="p-4 hover:bg-gray-50 dark:hover:bg-slate-800">
+                <div
+                  key={courier.id}
+                  className="p-4 hover:bg-gray-50 dark:hover:bg-slate-800"
+                >
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-semibold text-foreground">

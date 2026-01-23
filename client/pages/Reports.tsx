@@ -87,7 +87,9 @@ export default function ReportsPage() {
         {/* Overview Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-border">
-            <p className="text-sm text-muted-foreground mb-1">Total Deliveries</p>
+            <p className="text-sm text-muted-foreground mb-1">
+              Total Deliveries
+            </p>
             <p className="text-3xl font-bold text-primary">785</p>
             <p className="text-xs text-green-500 mt-1">+12% from last period</p>
           </div>
@@ -104,14 +106,18 @@ export default function ReportsPage() {
           <div className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-border">
             <p className="text-sm text-muted-foreground mb-1">Total Distance</p>
             <p className="text-3xl font-bold text-primary">1,265.6 km</p>
-            <p className="text-xs text-muted-foreground mt-1">Average efficiency</p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Average efficiency
+            </p>
           </div>
         </div>
 
         {/* Courier Performance Report */}
         <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-border overflow-hidden">
           <div className="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4 flex items-center justify-between">
-            <h2 className="text-xl font-bold text-white">Courier Performance</h2>
+            <h2 className="text-xl font-bold text-white">
+              Courier Performance
+            </h2>
             <button
               onClick={() => handleExport("Courier Performance")}
               className="bg-white/20 hover:bg-white/30 text-white font-medium py-1 px-3 rounded-lg transition-colors flex items-center gap-2 text-sm"
@@ -159,7 +165,9 @@ export default function ReportsPage() {
                     <td className="px-6 py-4 text-sm">
                       <span className="flex items-center gap-1">
                         <TrendingUp className="w-4 h-4 text-green-500" />
-                        <span className="text-foreground">{report.avgRating}</span>
+                        <span className="text-foreground">
+                          {report.avgRating}
+                        </span>
                       </span>
                     </td>
                     <td className="px-6 py-4 text-sm font-semibold text-primary">
@@ -175,7 +183,9 @@ export default function ReportsPage() {
         {/* Partner Performance Report */}
         <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-border overflow-hidden">
           <div className="bg-gradient-to-r from-green-500 to-green-600 px-6 py-4 flex items-center justify-between">
-            <h2 className="text-xl font-bold text-white">Partner Performance</h2>
+            <h2 className="text-xl font-bold text-white">
+              Partner Performance
+            </h2>
             <button
               onClick={() => handleExport("Partner Performance")}
               className="bg-white/20 hover:bg-white/30 text-white font-medium py-1 px-3 rounded-lg transition-colors flex items-center gap-2 text-sm"
@@ -244,15 +254,15 @@ export default function ReportsPage() {
             </h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center pb-3 border-b border-border">
-                <span className="text-sm text-muted-foreground">
-                  Completed
-                </span>
+                <span className="text-sm text-muted-foreground">Completed</span>
                 <span className="text-lg font-semibold text-green-500">
                   758
                 </span>
               </div>
               <div className="flex justify-between items-center pb-3 border-b border-border">
-                <span className="text-sm text-muted-foreground">In Transit</span>
+                <span className="text-sm text-muted-foreground">
+                  In Transit
+                </span>
                 <span className="text-lg font-semibold text-blue-500">23</span>
               </div>
               <div className="flex justify-between items-center pb-3 border-b border-border">
@@ -300,10 +310,10 @@ export default function ReportsPage() {
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-muted-foreground">
-                  Margin
+                <span className="text-sm text-muted-foreground">Margin</span>
+                <span className="text-lg font-semibold text-primary">
+                  56.5%
                 </span>
-                <span className="text-lg font-semibold text-primary">56.5%</span>
               </div>
             </div>
           </div>
@@ -312,7 +322,9 @@ export default function ReportsPage() {
         {/* Scooter Condition Report */}
         <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-border overflow-hidden">
           <div className="bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-4 flex items-center justify-between">
-            <h2 className="text-xl font-bold text-white">Scooter Fleet Report</h2>
+            <h2 className="text-xl font-bold text-white">
+              Scooter Fleet Report
+            </h2>
             <button
               onClick={() => handleExport("Scooter Report")}
               className="bg-white/20 hover:bg-white/30 text-white font-medium py-1 px-3 rounded-lg transition-colors flex items-center gap-2 text-sm"
@@ -325,7 +337,9 @@ export default function ReportsPage() {
           {/* Summary */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-6 border-b border-border">
             <div>
-              <p className="text-sm text-muted-foreground mb-1">Total Scooters</p>
+              <p className="text-sm text-muted-foreground mb-1">
+                Total Scooters
+              </p>
               <p className="text-2xl font-bold text-primary">8</p>
             </div>
             <div>
@@ -390,7 +404,7 @@ export default function ReportsPage() {
                 <button
                   onClick={() =>
                     setExpandedScooter(
-                      expandedScooter === scooter.id ? null : scooter.id
+                      expandedScooter === scooter.id ? null : scooter.id,
                     )
                   }
                   className="w-full flex items-center justify-between hover:bg-gray-50 dark:hover:bg-slate-800 py-2 rounded transition-colors"
@@ -405,15 +419,15 @@ export default function ReportsPage() {
                           scooter.status === "good"
                             ? "bg-green-100 text-green-800"
                             : scooter.status === "maintenance"
-                            ? "bg-orange-100 text-orange-800"
-                            : "bg-red-100 text-red-800"
+                              ? "bg-orange-100 text-orange-800"
+                              : "bg-red-100 text-red-800"
                         }`}
                       >
                         {scooter.status === "good"
                           ? "Good"
                           : scooter.status === "maintenance"
-                          ? "Maintenance"
-                          : "Damaged"}
+                            ? "Maintenance"
+                            : "Damaged"}
                       </span>
                     </div>
                     <p className="text-sm text-muted-foreground mt-1">
@@ -449,19 +463,21 @@ export default function ReportsPage() {
                             scooter.status === "good"
                               ? "text-green-500"
                               : scooter.status === "maintenance"
-                              ? "text-orange-500"
-                              : "text-red-500"
+                                ? "text-orange-500"
+                                : "text-red-500"
                           }`}
                         >
                           {scooter.status === "good"
                             ? "Excellent"
                             : scooter.status === "maintenance"
-                            ? "Needs Service"
-                            : "In Repair"}
+                              ? "Needs Service"
+                              : "In Repair"}
                         </p>
                       </div>
                       <div>
-                        <p className="text-muted-foreground mb-1">Assigned To</p>
+                        <p className="text-muted-foreground mb-1">
+                          Assigned To
+                        </p>
                         <p className="font-medium text-foreground">
                           {scooter.courier}
                         </p>
