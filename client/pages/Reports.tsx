@@ -309,6 +309,178 @@ export default function ReportsPage() {
           </div>
         </div>
 
+        {/* Scooter Condition Report */}
+        <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-border overflow-hidden">
+          <div className="bg-gradient-to-r from-purple-500 to-purple-600 px-6 py-4 flex items-center justify-between">
+            <h2 className="text-xl font-bold text-white">Scooter Fleet Report</h2>
+            <button
+              onClick={() => handleExport("Scooter Report")}
+              className="bg-white/20 hover:bg-white/30 text-white font-medium py-1 px-3 rounded-lg transition-colors flex items-center gap-2 text-sm"
+            >
+              <Download className="w-4 h-4" />
+              Export
+            </button>
+          </div>
+
+          {/* Summary */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-6 border-b border-border">
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">Total Scooters</p>
+              <p className="text-2xl font-bold text-primary">8</p>
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">
+                Good Condition
+              </p>
+              <p className="text-2xl font-bold text-green-500">6</p>
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">
+                Needs Maintenance
+              </p>
+              <p className="text-2xl font-bold text-orange-500">1</p>
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">Damaged</p>
+              <p className="text-2xl font-bold text-red-500">1</p>
+            </div>
+          </div>
+
+          {/* Scooter List */}
+          <div className="divide-y divide-border">
+            {[
+              {
+                id: "1",
+                number: "SCTR-001",
+                courier: "Ali Rahmani",
+                mileage: 5420,
+                status: "good",
+                equipment: 6,
+                issues: "None",
+              },
+              {
+                id: "2",
+                number: "SCTR-002",
+                courier: "Fatima Shodiev",
+                mileage: 4850,
+                status: "maintenance",
+                equipment: 4,
+                issues: "Brake pads, Missing shorts",
+              },
+              {
+                id: "3",
+                number: "SCTR-003",
+                courier: "Unassigned",
+                mileage: 6200,
+                status: "good",
+                equipment: 6,
+                issues: "None",
+              },
+              {
+                id: "4",
+                number: "SCTR-004",
+                courier: "Rustam Mirzoev",
+                mileage: 3450,
+                status: "damaged",
+                equipment: 3,
+                issues: "Engine malfunction, Multiple parts damaged",
+              },
+            ].map((scooter) => (
+              <div key={scooter.id} className="px-6 py-4">
+                <button
+                  onClick={() =>
+                    setExpandedScooter(
+                      expandedScooter === scooter.id ? null : scooter.id
+                    )
+                  }
+                  className="w-full flex items-center justify-between hover:bg-gray-50 dark:hover:bg-slate-800 py-2 rounded transition-colors"
+                >
+                  <div className="flex-1 text-left">
+                    <div className="flex items-center gap-3">
+                      <h4 className="font-semibold text-foreground">
+                        {scooter.number}
+                      </h4>
+                      <span
+                        className={`px-2 py-1 rounded-full text-xs font-medium ${
+                          scooter.status === "good"
+                            ? "bg-green-100 text-green-800"
+                            : scooter.status === "maintenance"
+                            ? "bg-orange-100 text-orange-800"
+                            : "bg-red-100 text-red-800"
+                        }`}
+                      >
+                        {scooter.status === "good"
+                          ? "Good"
+                          : scooter.status === "maintenance"
+                          ? "Maintenance"
+                          : "Damaged"}
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {scooter.courier} • {scooter.mileage} km
+                    </p>
+                  </div>
+                  <ChevronDown
+                    className={`w-5 h-5 text-muted-foreground transition-transform ${
+                      expandedScooter === scooter.id ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {expandedScooter === scooter.id && (
+                  <div className="mt-4 pt-4 border-t border-border space-y-3">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                      <div>
+                        <p className="text-muted-foreground mb-1">Mileage</p>
+                        <p className="font-medium text-foreground">
+                          {scooter.mileage} km
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-muted-foreground mb-1">Equipment</p>
+                        <p className="font-medium text-foreground">
+                          {scooter.equipment}/6 items
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-muted-foreground mb-1">Condition</p>
+                        <p
+                          className={`font-medium ${
+                            scooter.status === "good"
+                              ? "text-green-500"
+                              : scooter.status === "maintenance"
+                              ? "text-orange-500"
+                              : "text-red-500"
+                          }`}
+                        >
+                          {scooter.status === "good"
+                            ? "Excellent"
+                            : scooter.status === "maintenance"
+                            ? "Needs Service"
+                            : "In Repair"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-muted-foreground mb-1">Assigned To</p>
+                        <p className="font-medium text-foreground">
+                          {scooter.courier}
+                        </p>
+                      </div>
+                    </div>
+                    {scooter.issues !== "None" && (
+                      <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded p-3">
+                        <p className="text-sm font-medium text-red-700 dark:text-red-300">
+                          Issues: {scooter.issues}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Export Options */}
         <div className="bg-gradient-to-r from-primary to-blue-600 rounded-lg p-6 text-white shadow-lg">
           <h3 className="text-xl font-bold mb-4">Export Reports</h3>
