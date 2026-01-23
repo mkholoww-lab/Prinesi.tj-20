@@ -1,9 +1,10 @@
 import Layout from "@/components/Layout";
 import { useState } from "react";
-import { Calendar, Download, TrendingUp } from "lucide-react";
+import { Calendar, Download, TrendingUp, ChevronDown } from "lucide-react";
 
 export default function ReportsPage() {
   const [dateRange, setDateRange] = useState("month");
+  const [expandedScooter, setExpandedScooter] = useState<string | null>(null);
 
   const courierReports = [
     {
