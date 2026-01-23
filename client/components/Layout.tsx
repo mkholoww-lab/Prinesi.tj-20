@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   Package,
   Users,
@@ -9,8 +9,10 @@ import {
   Menu,
   X,
   Bike,
+  LogOut,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,16 +21,25 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = React.useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout, hasAccess } = useAuth();
 
-  const navigation = [
-    { name: "Dashboard", href: "/", icon: BarChart3 },
-    { name: "Couriers", href: "/couriers", icon: Users },
-    { name: "On-Duty", href: "/on-duty", icon: Clock },
-    { name: "Deliveries", href: "/deliveries", icon: Package },
-    { name: "Scooters", href: "/scooters", icon: Bike },
-    { name: "Partners", href: "/partners", icon: Users },
-    { name: "Reports", href: "/reports", icon: FileText },
+  const navigationItems = [
+    { name: "Dashboard", href: "/", icon: BarChart3, roles: ["admin", "operator", "manager"] as const },
+    { name: "Couriers", href: "/couriers", icon: Users, roles: ["admin", "manager"] as const },
+    { name: "On-Duty", href: "/on-duty", icon: Clock, roles: ["admin"] as const },
+    { name: "Deliveries", href: "/deliveries", icon: Package, roles: ["admin", "operator"] as const },
+    { name: "Scooters", href: "/scooters", icon: Bike, roles: ["admin"] as const },
+    { name: "Partners", href: "/partners", icon: Users, roles: ["admin", "operator"] as const },
+    { name: "Reports", href: "/reports", icon: FileText, roles: ["admin", "operator", "manager"] as const },
   ];
+
+  const navigation = navigationItems.filter((item) => hasAccess(item.roles));
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   const isActive = (href: string) => {
     if (href === "/" && location.pathname === "/") return true;
