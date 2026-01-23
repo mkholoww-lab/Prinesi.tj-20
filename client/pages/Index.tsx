@@ -9,7 +9,7 @@ export default function Dashboard() {
       value: "12",
       icon: Users,
       color: "bg-blue-500",
-      href: "/on-duty",
+      href: "/couriers",
     },
     {
       label: "Total Deliveries",
@@ -19,18 +19,18 @@ export default function Dashboard() {
       href: "/deliveries",
     },
     {
+      label: "Scooters",
+      value: "8",
+      icon: Package,
+      color: "bg-indigo-500",
+      href: "/scooters",
+    },
+    {
       label: "Partners",
       value: "18",
       icon: Users,
       color: "bg-green-500",
       href: "/partners",
-    },
-    {
-      label: "Avg Rating",
-      value: "4.8",
-      icon: TrendingUp,
-      color: "bg-purple-500",
-      href: "/reports",
     },
   ];
 
