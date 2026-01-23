@@ -46,11 +46,13 @@ export default function Layout({ children }: LayoutProps) {
         {/* Logo/Brand */}
         <div className="h-16 border-b border-sidebar-border flex items-center justify-center px-4">
           <div className="flex items-center gap-2 whitespace-nowrap">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-              <Package className="w-5 h-5 text-white" />
-            </div>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F8cc0bb9fe0d443f9a8b7366b133cf86b%2F524b9bb04585458cb8e202d0dd9acde4?format=webp&width=800&height=1200"
+              alt="Prinesi.tj"
+              className="w-8 h-8 flex-shrink-0"
+            />
             {sidebarOpen && (
-              <span className="font-bold text-lg">CourierHub</span>
+              <span className="font-bold text-lg">Prinesi.tj</span>
             )}
           </div>
         </div>
