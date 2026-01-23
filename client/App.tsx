@@ -11,6 +11,7 @@ import CouriersPage from "./pages/Couriers";
 import OnDutyPage from "./pages/OnDuty";
 import DeliveriesPage from "./pages/Deliveries";
 import PartnersPage from "./pages/Partners";
+import ScootersPage from "./pages/Scooters";
 import ReportsPage from "./pages/Reports";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/on-duty" element={<OnDutyPage />} />
           <Route path="/deliveries" element={<DeliveriesPage />} />
           <Route path="/partners" element={<PartnersPage />} />
+          <Route path="/scooters" element={<ScootersPage />} />
           <Route path="/reports" element={<ReportsPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
