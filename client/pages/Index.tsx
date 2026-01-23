@@ -40,11 +40,16 @@ export default function Dashboard() {
     <Layout>
       <div className="space-y-8">
         {/* Welcome Section */}
-        <div className="bg-gradient-to-r from-primary to-blue-600 rounded-xl p-8 text-white shadow-lg">
-          <h1 className="text-4xl font-bold mb-2">Welcome to CourierHub</h1>
-          <p className="text-blue-50 text-lg">
-            Manage your courier operations efficiently with real-time tracking
-            and detailed reporting
+        <div className="bg-gradient-to-r from-primary to-green-600 rounded-xl p-8 text-white shadow-lg">
+          <h1 className="text-4xl font-bold mb-2">
+            Welcome, {user?.username}!
+          </h1>
+          <p className="text-green-50 text-lg">
+            {user?.role === "admin"
+              ? "Full system access. Manage all operations, couriers, scooters, and view analytics."
+              : user?.role === "operator"
+              ? "Access to deliveries, partners, and comprehensive reports."
+              : "Manage couriers and view performance reports."}
           </p>
         </div>
 
