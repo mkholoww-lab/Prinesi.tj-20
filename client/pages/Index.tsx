@@ -21,7 +21,7 @@ export default function Dashboard() {
     {
       label: "Scooters",
       value: "8",
-      icon: Package,
+      icon: Bike,
       color: "bg-indigo-500",
       href: "/scooters",
     },
