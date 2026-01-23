@@ -26,26 +26,6 @@ export default function LoginPage() {
     }
   };
 
-  const roles: { id: UserRole; title: string; description: string; color: string }[] = [
-    {
-      id: "admin",
-      title: "Admin",
-      description: "Full access to all features and settings",
-      color: "from-green-500 to-green-600",
-    },
-    {
-      id: "operator",
-      title: "Operator",
-      description: "Access to orders, partners, and reports",
-      color: "from-emerald-500 to-emerald-600",
-    },
-    {
-      id: "manager",
-      title: "Manager",
-      description: "Manage couriers and view reports",
-      color: "from-teal-500 to-teal-600",
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center px-4">
