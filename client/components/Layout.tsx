@@ -8,6 +8,7 @@ import {
   BarChart3,
   Menu,
   X,
+  Bike,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +25,7 @@ export default function Layout({ children }: LayoutProps) {
     { name: "Couriers", href: "/couriers", icon: Users },
     { name: "On-Duty", href: "/on-duty", icon: Clock },
     { name: "Deliveries", href: "/deliveries", icon: Package },
+    { name: "Scooters", href: "/scooters", icon: Bike },
     { name: "Partners", href: "/partners", icon: Users },
     { name: "Reports", href: "/reports", icon: FileText },
   ];
