@@ -1,13 +1,7 @@
 import Layout from "@/components/Layout";
 import { useState } from "react";
-import {
-  Plus,
-  Edit,
-  Trash2,
-  Search,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { Plus, Edit, Trash2, Search, ChevronDown, ChevronUp, Camera, AlertCircle } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface Courier {
   id: string;
@@ -22,6 +16,8 @@ interface Courier {
   workEndTime: string;
   status: "active" | "inactive";
   joinDate: string;
+  photo?: string;
+  passportPhoto?: string;
 }
 
 export default function CouriersPage() {
@@ -111,7 +107,7 @@ export default function CouriersPage() {
     (courier) =>
       courier.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       courier.phone.includes(searchTerm) ||
-      courier.email.toLowerCase().includes(searchTerm.toLowerCase()),
+      courier.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -223,10 +219,7 @@ export default function CouriersPage() {
                     placeholder="Scooter Number (e.g. SCTR-001)"
                     value={formData.scooterNumber}
                     onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        scooterNumber: e.target.value,
-                      })
+                      setFormData({ ...formData, scooterNumber: e.target.value })
                     }
                     className="px-4 py-2 border border-input rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                   />
@@ -272,10 +265,7 @@ export default function CouriersPage() {
                       type="time"
                       value={formData.workEndTime}
                       onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          workEndTime: e.target.value,
-                        })
+                        setFormData({ ...formData, workEndTime: e.target.value })
                       }
                       className="px-4 py-2 border border-input rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary w-full"
                     />
@@ -323,7 +313,7 @@ export default function CouriersPage() {
               <div
                 onClick={() =>
                   setExpandedCourier(
-                    expandedCourier === courier.id ? null : courier.id,
+                    expandedCourier === courier.id ? null : courier.id
                   )
                 }
                 className="p-6 cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors flex items-center justify-between"
