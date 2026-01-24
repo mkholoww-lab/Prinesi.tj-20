@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { useState } from "react";
-import { Plus, Edit, Trash2, Search } from "lucide-react";
+import { Plus, Edit, Trash2, Search, AlertCircle } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface Partner {
   id: string;
@@ -85,7 +86,7 @@ export default function PartnersPage() {
     (partner) =>
       partner.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       partner.contact.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      partner.email.toLowerCase().includes(searchTerm.toLowerCase()),
+      partner.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -119,10 +120,7 @@ export default function PartnersPage() {
               Total Monthly Volume
             </p>
             <p className="text-3xl font-bold text-green-500">
-              {partners
-                .reduce((sum, p) => sum + p.monthlySpend, 0)
-                .toLocaleString()}{" "}
-              сомони
+              {partners.reduce((sum, p) => sum + p.monthlySpend, 0).toLocaleString()} сомони
             </p>
           </div>
           <div className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-border">
@@ -279,7 +277,9 @@ export default function PartnersPage() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs text-muted-foreground mb-1">Joined</p>
+                    <p className="text-xs text-muted-foreground mb-1">
+                      Joined
+                    </p>
                     <p className="text-sm text-foreground">
                       {new Date(partner.joinDate).toLocaleDateString()}
                     </p>
