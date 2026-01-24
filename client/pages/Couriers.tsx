@@ -305,6 +305,68 @@ export default function CouriersPage() {
                   </div>
                 </div>
               </div>
+
+              {/* Photo Uploads */}
+              <div>
+                <h3 className="text-lg font-semibold text-foreground mb-4">
+                  Photos
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm text-muted-foreground mb-2 block">
+                      Courier Photo
+                    </label>
+                    <label className="cursor-pointer">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => handleFileUpload(e, "photo")}
+                        className="hidden"
+                      />
+                      <span className="block px-4 py-3 border-2 border-dashed border-input rounded-lg bg-background hover:bg-gray-50 dark:hover:bg-slate-800 text-center cursor-pointer transition-colors">
+                        <Camera className="w-5 h-5 mx-auto mb-2 text-muted-foreground" />
+                        <p className="text-sm text-muted-foreground">
+                          {formData.photo ? "Photo uploaded" : "Click to upload"}
+                        </p>
+                      </span>
+                    </label>
+                    {formData.photo && (
+                      <img
+                        src={formData.photo}
+                        alt="Courier"
+                        className="w-full h-32 object-cover rounded-lg mt-2"
+                      />
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="text-sm text-muted-foreground mb-2 block">
+                      Passport Photo
+                    </label>
+                    <label className="cursor-pointer">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => handleFileUpload(e, "passportPhoto")}
+                        className="hidden"
+                      />
+                      <span className="block px-4 py-3 border-2 border-dashed border-input rounded-lg bg-background hover:bg-gray-50 dark:hover:bg-slate-800 text-center cursor-pointer transition-colors">
+                        <Camera className="w-5 h-5 mx-auto mb-2 text-muted-foreground" />
+                        <p className="text-sm text-muted-foreground">
+                          {formData.passportPhoto ? "Photo uploaded" : "Click to upload"}
+                        </p>
+                      </span>
+                    </label>
+                    {formData.passportPhoto && (
+                      <img
+                        src={formData.passportPhoto}
+                        alt="Passport"
+                        className="w-full h-32 object-cover rounded-lg mt-2"
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="flex gap-2 mt-6">
