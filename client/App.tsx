@@ -59,7 +59,7 @@ function AppRoutes() {
       {/* Admin routes */}
       <Route
         path="/couriers"
-        element={<ProtectedRoute element={<CouriersPage />} requiredRoles={["admin", "manager"]} />}
+        element={<ProtectedRoute element={<CouriersPage />} requiredRoles={["admin"]} />}
       />
       <Route
         path="/on-duty"
@@ -72,7 +72,7 @@ function AppRoutes() {
       />
       <Route
         path="/partners"
-        element={<ProtectedRoute element={<PartnersPage />} requiredRoles={["admin", "operator"]} />}
+        element={<ProtectedRoute element={<PartnersPage />} requiredRoles={["admin"]} />}
       />
       {/* Admin only */}
       <Route
@@ -83,6 +83,16 @@ function AppRoutes() {
       <Route
         path="/reports"
         element={<ProtectedRoute element={<ReportsPage />} requiredRoles={["admin", "operator", "manager"]} />}
+      />
+      {/* User settings - all authenticated users */}
+      <Route
+        path="/settings"
+        element={<ProtectedRoute element={<SettingsPage />} requiredRoles={["admin", "operator", "manager"]} />}
+      />
+      {/* Admin users management */}
+      <Route
+        path="/admin/users"
+        element={<ProtectedRoute element={<AdminUsersPage />} requiredRoles={["admin"]} />}
       />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
