@@ -552,6 +552,39 @@ export default function CouriersPage() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Photos Section */}
+                  <div className="col-span-full">
+                    <h4 className="font-semibold text-foreground mb-3">
+                      Photos
+                    </h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      {courier.photo && (
+                        <div>
+                          <p className="text-xs text-muted-foreground mb-2">
+                            Courier Photo
+                          </p>
+                          <img
+                            src={courier.photo}
+                            alt={courier.name}
+                            className="w-full h-40 object-cover rounded-lg border border-border"
+                          />
+                        </div>
+                      )}
+                      {courier.passportPhoto && (
+                        <div>
+                          <p className="text-xs text-muted-foreground mb-2">
+                            Passport Photo
+                          </p>
+                          <img
+                            src={courier.passportPhoto}
+                            alt="Passport"
+                            className="w-full h-40 object-cover rounded-lg border border-border"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
