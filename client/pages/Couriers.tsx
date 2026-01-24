@@ -127,6 +127,8 @@ export default function CouriersPage() {
         govRegNumber: "",
         workStartTime: "08:00",
         workEndTime: "18:00",
+        photo: "",
+        passportPhoto: "",
       });
       setShowForm(false);
     }
