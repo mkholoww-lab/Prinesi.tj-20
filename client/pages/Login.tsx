@@ -99,11 +99,11 @@ export default function LoginPage() {
           {/* Login Button */}
           <button
             onClick={handleLogin}
-            disabled={!username.trim()}
+            disabled={!username.trim() || !password.trim()}
             className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
           >
             <LogIn className="w-5 h-5" />
-            Login as {selectedRole.charAt(0).toUpperCase() + selectedRole.slice(1)}
+            Login
           </button>
 
           {/* Demo Accounts */}
@@ -115,29 +115,29 @@ export default function LoginPage() {
               <button
                 onClick={() => {
                   setUsername("admin");
-                  setSelectedRole("admin");
+                  setPassword("admin123");
                 }}
                 className="w-full text-sm text-green-600 dark:text-green-400 hover:text-green-700 py-2"
               >
-                Use Demo Admin
+                Admin: admin / admin123
               </button>
               <button
                 onClick={() => {
                   setUsername("operator");
-                  setSelectedRole("operator");
+                  setPassword("operator123");
                 }}
                 className="w-full text-sm text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 py-2"
               >
-                Use Demo Operator
+                Operator: operator / operator123
               </button>
               <button
                 onClick={() => {
                   setUsername("manager");
-                  setSelectedRole("manager");
+                  setPassword("manager123");
                 }}
                 className="w-full text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 py-2"
               >
-                Use Demo Manager
+                Manager: manager / manager123
               </button>
             </div>
           </div>
