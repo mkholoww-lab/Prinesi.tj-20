@@ -15,6 +15,21 @@ interface Partner {
 }
 
 export default function PartnersPage() {
+  const { user } = useAuth();
+
+  if (!user || user.role !== "admin") {
+    return (
+      <Layout>
+        <div className="text-center py-12">
+          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <p className="text-red-600 font-medium">
+            Only administrators can access this page
+          </p>
+        </div>
+      </Layout>
+    );
+  }
+
   const [partners, setPartners] = useState<Partner[]>([
     {
       id: "1",
