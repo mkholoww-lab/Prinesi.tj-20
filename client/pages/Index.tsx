@@ -12,7 +12,7 @@ export default function Dashboard() {
       icon: Users,
       color: "bg-blue-500",
       href: "/couriers",
-      roles: ["admin", "manager"] as const,
+      roles: ["admin"] as const,
     },
     {
       label: "Total Deliveries",
@@ -36,7 +36,7 @@ export default function Dashboard() {
       icon: Users,
       color: "bg-green-500",
       href: "/partners",
-      roles: ["admin", "operator"] as const,
+      roles: ["admin"] as const,
     },
   ];
 
@@ -54,8 +54,8 @@ export default function Dashboard() {
             {user?.role === "admin"
               ? "Full system access. Manage all operations, couriers, scooters, and view analytics."
               : user?.role === "operator"
-                ? "Access to deliveries, partners, and comprehensive reports."
-                : "Manage couriers and view performance reports."}
+              ? "Access to deliveries, partners, and comprehensive reports."
+              : "Manage couriers and view performance reports."}
           </p>
         </div>
 
@@ -180,18 +180,14 @@ export default function Dashboard() {
                 Monthly Deliveries
               </p>
               <p className="text-3xl font-bold text-primary">1,246</p>
-              <p className="text-xs text-green-500 mt-2">
-                +12% from last month
-              </p>
+              <p className="text-xs text-green-500 mt-2">+12% from last month</p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground mb-2">
                 Total Distance
               </p>
               <p className="text-3xl font-bold text-primary">3,847 km</p>
-              <p className="text-xs text-green-500 mt-2">
-                Average per delivery
-              </p>
+              <p className="text-xs text-green-500 mt-2">Average per delivery</p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground mb-2">
