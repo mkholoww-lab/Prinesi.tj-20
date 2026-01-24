@@ -21,6 +21,7 @@ interface Courier {
 }
 
 export default function CouriersPage() {
+  const { user } = useAuth();
   const [couriers, setCouriers] = useState<Courier[]>([
     {
       id: "1",
@@ -51,6 +52,19 @@ export default function CouriersPage() {
       joinDate: "2024-02-20",
     },
   ]);
+
+  if (!user || user.role !== "admin") {
+    return (
+      <Layout>
+        <div className="text-center py-12">
+          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <p className="text-red-600 font-medium">
+            Only administrators can access this page
+          </p>
+        </div>
+      </Layout>
+    );
+  }
 
   const [showForm, setShowForm] = useState(false);
   const [expandedCourier, setExpandedCourier] = useState<string | null>(null);
