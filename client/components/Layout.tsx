@@ -33,7 +33,7 @@ export default function Layout({ children }: LayoutProps) {
     { name: "Scooters", href: "/scooters", icon: Bike, roles: ["admin"] as const },
     { name: "Partners", href: "/partners", icon: Users, roles: ["admin"] as const },
     { name: "Reports", href: "/reports", icon: FileText, roles: ["admin", "operator", "manager"] as const },
-    { name: "Settings", href: "/settings", icon: X, roles: ["admin", "operator", "manager"] as const },
+    { name: "Settings", href: "/settings", icon: Settings, roles: ["admin", "operator", "manager"] as const },
     { name: "Users", href: "/admin/users", icon: Users, roles: ["admin"] as const },
   ];
 
