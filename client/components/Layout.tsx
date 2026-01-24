@@ -25,48 +25,15 @@ export default function Layout({ children }: LayoutProps) {
   const { user, logout, hasAccess } = useAuth();
 
   const navigationItems = [
-    {
-      name: "Dashboard",
-      href: "/",
-      icon: BarChart3,
-      roles: ["admin", "operator", "manager"] as const,
-    },
-    {
-      name: "Couriers",
-      href: "/couriers",
-      icon: Users,
-      roles: ["admin", "manager"] as const,
-    },
-    {
-      name: "On-Duty",
-      href: "/on-duty",
-      icon: Clock,
-      roles: ["admin"] as const,
-    },
-    {
-      name: "Deliveries",
-      href: "/deliveries",
-      icon: Package,
-      roles: ["admin", "operator"] as const,
-    },
-    {
-      name: "Scooters",
-      href: "/scooters",
-      icon: Bike,
-      roles: ["admin"] as const,
-    },
-    {
-      name: "Partners",
-      href: "/partners",
-      icon: Users,
-      roles: ["admin", "operator"] as const,
-    },
-    {
-      name: "Reports",
-      href: "/reports",
-      icon: FileText,
-      roles: ["admin", "operator", "manager"] as const,
-    },
+    { name: "Dashboard", href: "/", icon: BarChart3, roles: ["admin", "operator", "manager"] as const },
+    { name: "Couriers", href: "/couriers", icon: Users, roles: ["admin"] as const },
+    { name: "On-Duty", href: "/on-duty", icon: Clock, roles: ["admin"] as const },
+    { name: "Deliveries", href: "/deliveries", icon: Package, roles: ["admin", "operator"] as const },
+    { name: "Scooters", href: "/scooters", icon: Bike, roles: ["admin"] as const },
+    { name: "Partners", href: "/partners", icon: Users, roles: ["admin"] as const },
+    { name: "Reports", href: "/reports", icon: FileText, roles: ["admin", "operator", "manager"] as const },
+    { name: "Settings", href: "/settings", icon: X, roles: ["admin", "operator", "manager"] as const },
+    { name: "Users", href: "/admin/users", icon: Users, roles: ["admin"] as const },
   ];
 
   const navigation = navigationItems.filter((item) => hasAccess(item.roles));
@@ -88,7 +55,7 @@ export default function Layout({ children }: LayoutProps) {
       <div
         className={cn(
           "fixed top-0 left-0 h-full bg-sidebar text-sidebar-foreground transition-all duration-300 ease-in-out z-40",
-          sidebarOpen ? "w-64" : "w-20",
+          sidebarOpen ? "w-64" : "w-20"
         )}
       >
         {/* Logo/Brand */}
@@ -120,14 +87,12 @@ export default function Layout({ children }: LayoutProps) {
                     "flex items-center gap-3 px-3 py-3 rounded-lg transition-colors duration-200",
                     active
                       ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                      : "text-sidebar-foreground hover:bg-sidebar-accent/50",
+                      : "text-sidebar-foreground hover:bg-sidebar-accent/50"
                   )}
                   title={!sidebarOpen ? item.name : ""}
                 >
                   <Icon className="w-5 h-5 flex-shrink-0" />
-                  {sidebarOpen && (
-                    <span className="text-sm font-medium">{item.name}</span>
-                  )}
+                  {sidebarOpen && <span className="text-sm font-medium">{item.name}</span>}
                 </Link>
               );
             })}
@@ -154,7 +119,7 @@ export default function Layout({ children }: LayoutProps) {
       <div
         className={cn(
           "transition-all duration-300 ease-in-out",
-          sidebarOpen ? "ml-64" : "ml-20",
+          sidebarOpen ? "ml-64" : "ml-20"
         )}
       >
         {/* Header */}
@@ -165,9 +130,7 @@ export default function Layout({ children }: LayoutProps) {
           {user && (
             <div className="flex items-center gap-4">
               <div className="text-right">
-                <p className="text-sm font-medium text-foreground">
-                  {user.username}
-                </p>
+                <p className="text-sm font-medium text-foreground">{user.username}</p>
                 <p className="text-xs text-muted-foreground capitalize">
                   {user.role}
                 </p>
