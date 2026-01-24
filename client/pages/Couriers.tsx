@@ -78,8 +78,27 @@ export default function CouriersPage() {
     govRegNumber: "",
     workStartTime: "08:00",
     workEndTime: "18:00",
+    photo: "",
+    passportPhoto: "",
   });
   const [searchTerm, setSearchTerm] = useState("");
+
+  const handleFileUpload = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: "photo" | "passportPhoto"
+  ) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({
+          ...formData,
+          [field]: reader.result as string,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleAddCourier = () => {
     if (
